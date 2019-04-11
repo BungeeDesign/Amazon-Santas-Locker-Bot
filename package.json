@@ -1,0 +1,21 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Amazon santas locker bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Rogers",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "jsdom": "^13.1.0",
+    "okrabyte": "^0.1.1",
+    "phantom": "^6.0.3",
+    "request": "^2.88.0",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "tesseractocr": "^1.1.1",
+    "twilio": "^3.25.0"
+  }
+}
