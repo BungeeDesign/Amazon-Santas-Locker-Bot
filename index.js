@@ -28,8 +28,8 @@ let location = '';
 function monitor() {
     console.log('Amazon Santas Locker Bot - Loading....');
     setTimeout(() => {
-            console.log('Checking for new Tweet...');
-            twitterCheck();
+        console.log('Checking for new Tweet...');
+        twitterCheck();
     }, 20000)
 }
 monitor();
@@ -38,13 +38,13 @@ monitor();
 async function twitterCheck() {
     console.log('Taking Screenshot...');
     const tInstance = await phantom.create();
-    const tpage  = await tInstance.createPage();
+    const tpage = await tInstance.createPage();
 
     tpage.property('clipRect', {
-        top: 679, 
-        left: 440, 
-        width: 440, 
-        height: 350 
+        top: 679,
+        left: 440,
+        width: 440,
+        height: 350
     }).then(
 
     );
@@ -54,8 +54,6 @@ async function twitterCheck() {
     await tInstance.exit();
     imageOCR();
 }
-
-
 
 function imageOCR() {
     console.log('Decoding Image...');
@@ -81,11 +79,6 @@ function imageOCR() {
     scrape();
 }
 
-
-
-
-
-
 async function scrape() {
     const instance = await phantom.create();
     const page = await instance.createPage();
@@ -96,11 +89,7 @@ async function scrape() {
     await instance.exit();
 };
 
-
-
-
 // Scrape content
-
 function scrapeContent(content) {
     const $ = cheerio.load(content);
 
@@ -114,24 +103,22 @@ function scrapeContent(content) {
 
     let lockerLength = previousLockerLocation.length;
 
-    if (previousLockerLocation[lockerLength -2] != lockerLocation) {
-            monitor();
+    if (previousLockerLocation[lockerLength - 2] != lockerLocation) {
+        monitor();
     } else {
         console.log('No new tweet found...', previousLockerLocation);
     }
     monitor();
 }
 
-
-
 // Notifcation
 function sendText(body) {
     client.messages
-          .create({from: '+441277420219 	', body: body, to: '+447468450924'})
-          .then(message => console.log('Text Sent! SID: ', message.sid))
-          .done();
+        .create({
+            from: '+441277420219 	',
+            body: body,
+            to: '+447468450924'
+        })
+        .then(message => console.log('Text Sent! SID: ', message.sid))
+        .done();
 }
-
-
-
-
